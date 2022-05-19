@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 02:27:58 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/05/17 20:28:52 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/05/19 13:51:20 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,17 @@
 
 int main(int ac, char **av)
 {
-	int	i;
-	int	j;
-
 	if (ac >= 2)
 	{
-		i = 0;
-		while (av[i])
+		for (int i = 1; av[i] != NULL; i++)
 		{
-			j = 0;
-			while (av[i][j] != '\0')
+			for (int j = 0; av[i][j] != '\0'; j++)
 			{
-				if (isupper(av[i][j]) == 0)
-					std::cout << toupper(av[i][j]);
+				if (isupper(av[i][j]) == false)
+					std::cout << (char)toupper(av[i][j]);
 				else
 					std::cout << av[i][j];
-				j++;
 			}
-			i++;
 		}
 	}
 	else
