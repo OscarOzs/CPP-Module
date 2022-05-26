@@ -10,7 +10,7 @@ BUILD = .build
 
 vpath %.cpp $(foreach dir, $(SRCS_PATH), $(dir):)
 
-SRCS =  PhoneBook.cpp
+SRCS =  $(foreach dir, $(SRCS_PATH), $(foreach file, $(wildcard $(dir)/*.cpp), $(notdir $(file))))
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.cpp=%.o))
 
@@ -18,11 +18,9 @@ C++FLAGS =	-Wall -Wextra -Werror -std=c++98
 
 IFLAGS		=	$(foreach dir, $(INC_DIR), -I $(dir))
 
-TEST = 
-
 all : $(NAME)
 
-$(NAME) : $(TEST) $(OBJS)
+$(NAME) : $(OBJS)
 	@c++ $(C++FLAGS) $(OBJS) -o $(NAME)
 	@echo "Executable successfully created\n"
 
