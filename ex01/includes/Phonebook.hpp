@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 17:59:29 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/05/26 18:00:37 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/05/30 20:27:07 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
-# include "PhoneBook.class.hpp"
+# include "PhoneBook_class.hpp"
+# include "Contact_class.hpp"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:46:06 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/05/26 19:20:40 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/05/30 20:30:24 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ PhoneBook::PhoneBook(const char *add_cmd, const char *search_cmd, const char *ex
 add(add_cmd), search(search_cmd), exit(exit_cmd)
 {
 	std::cout << "Welcome to your PhoneBook" << std::endl;
-	this->welcome_message();
+	welcome_message();
 	return ;
 }
 
