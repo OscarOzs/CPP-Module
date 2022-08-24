@@ -1,7 +1,7 @@
 # include <iostream>
 # include "Sample_class.hpp"
 
-Sample::Sample(float const f) : pi(f), qd(42)
+Sample::Sample(float const f) : pi(f), qd(42) // ici j'initialise la valeur f a la const pi
 {
 	std::cout << "Constructor called" << std::endl;
 	return;

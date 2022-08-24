@@ -14,5 +14,6 @@ public:
 	void	bar(void) const; // const indique ici au compilateur que la fonction "bar" ne pourra
 	// jamais changer la valeur des instances courantes
 };
-
+// si je veux ecrire une fonction membre qui ne modifie pas les instances courantes,
+// je DOIS la declarer en const.
 #endif
