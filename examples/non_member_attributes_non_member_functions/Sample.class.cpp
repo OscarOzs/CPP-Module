@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Sample.class.cpp                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 15:35:16 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/05/17 15:37:26 by oozsertt         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 # include <iostream>
 # include "Sample.class.hpp"
 
@@ -29,9 +17,9 @@ Sample::~Sample(void)
 	return;
 }
 
-int		Sample::getNbInst(void)
+int		Sample::getNbInst(void) // impossible d'utiliser "this" dans une fonction non membre
 {
 	return (Sample::_nbInst);
 }
 
-int	Sample::_nbInst = 0;
+int	Sample::_nbInst = 0; // << la seule facon d'initialiser un attribut non membre
