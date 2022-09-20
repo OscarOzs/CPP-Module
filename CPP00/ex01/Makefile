@@ -1,43 +1,35 @@
-NAME = PhoneBook.exe
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: oozsertt <wiozsert@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/09/20 13:29:45 by oozsertt          #+#    #+#              #
+#    Updated: 2022/09/20 13:33:23 by oozsertt         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS_PATH =	$(shell find srcs -type d)
+NAME = Phonebook.exe
 
-OBJ_DIR = $(BUILD)/obj
+SRCS = PhoneBook.cpp \
+PhoneBook.class.cpp Contact.class.cpp \
 
-INC_DIR = $(shell find includes -type d) \
+OBJS = PhoneBook.o \
+PhoneBook.class.o Contact.class.o \
 
-BUILD = .build
-
-vpath %.cpp $(foreach dir, $(SRCS_PATH), $(dir):)
-
-SRCS =  $(foreach dir, $(SRCS_PATH), $(foreach file, $(wildcard $(dir)/*.cpp), $(notdir $(file))))
-
-OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.cpp=%.o))
-
-C++FLAGS =	-Wall -Wextra -Werror -std=c++98
-
-IFLAGS		=	$(foreach dir, $(INC_DIR), -I $(dir))
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-	@c++ $(C++FLAGS) $(OBJS) -o $(NAME)
-	@echo "Executable successfully created\n"
-
-$(OBJ_DIR)/%.o : %.cpp | $(BUILD)
-	@c++ $(C++FLAGS) -c $< $(IFLAGS) -o $@
-
-$(BUILD):
-	@mkdir $@ $(OBJ_DIR)
-	@echo "Object directory created\n"
-	@echo "Compiling..\n"
+$(NAME) : $(BUILD)
+	c++ $(FLAGS) $(SRCS) -c
+	c++ $(FLAGS) $(OBJS) -o $(NAME)
 
 clean :
-	@rm -rf $(BUILD)
-	@echo "Object directory deleted\n"
-
+	@rm -rf $(OBJS)
+	
 fclean : clean
 	@rm -rf $(NAME)
-	@echo "Executable removed\n"
-
+	
 re : fclean all
