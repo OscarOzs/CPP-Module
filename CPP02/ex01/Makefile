@@ -6,7 +6,7 @@
 #    By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/30 09:23:01 by oozsertt          #+#    #+#              #
-#    Updated: 2022/09/30 10:35:10 by oozsertt         ###   ########.fr        #
+#    Updated: 2022/10/03 12:17:21 by oozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,7 @@ Fixed.cpp
 OBJS = main.o \
 Fixed.o
 
-FLAGS = -std=c++98 -Wall -Wextra 
-#-Werror 
+FLAGS = -std=c++98 -Wall -Wextra -Werror 
 
 all : $(NAME)
 
