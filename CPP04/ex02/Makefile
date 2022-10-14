@@ -6,7 +6,7 @@
 #    By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 09:12:51 by oozsertt          #+#    #+#              #
-#    Updated: 2022/10/14 10:10:52 by oozsertt         ###   ########.fr        #
+#    Updated: 2022/10/14 19:00:22 by oozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ AAnimal.cpp Cat.cpp Dog.cpp Brain.cpp
 OBJS = main.o \
 AAnimal.o Cat.o Dog.o Brain.o
 
-FLAGS = -std=c++98 -Wall -Wextra -Werror 
+FLAGS = -std=c++98 -Wall -Wextra -Werror
 
 all : $(NAME)
 
