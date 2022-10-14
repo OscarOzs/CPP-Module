@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 09:11:47 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/14 09:47:44 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/10/14 10:05:31 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ int main(void)
 	delete brain;
 	delete dogcpy;
 
+	std::cout << std::endl << "STACK DESTRUCTOR : " << std::endl;
 	return (0);
 }
