@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:43:46 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/14 19:38:33 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/10/17 14:41:49 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	assignTest()
 
 int main(void)
 {
-	// gradeTooLow();
+	gradeTooLow();
 	// gradeTooHigh();
 	// upgradeFailed();
 	// downgradeFailed();
