@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:19:27 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/18 17:40:22 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/10/19 11:44:20 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ _name(name)
 	return;
 }
 
-Bureaucrat::Bureaucrat( const Bureaucrat & src )
+Bureaucrat::Bureaucrat( const Bureaucrat & src ) : _name(src._name)
 {
 	this->_grade = src._grade;
 	return;
