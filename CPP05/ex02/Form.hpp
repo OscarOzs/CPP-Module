@@ -28,7 +28,7 @@ class Form
 			public:
 				virtual const char* what() const throw()
 				{
-					return ("One of grade is too high");
+					return ("grade input is too high");
 				}
 		};
 
@@ -37,7 +37,7 @@ class Form
 			public:
 				virtual const char*	what() const throw()
 				{
-					return ("One of grade is too low");
+					return ("grade is too low");
 				}
 		};
 
@@ -56,12 +56,13 @@ class Form
 		Form( Form const & src );
 		~Form();
 		
-		void				execute(Bureaucrat const & executor) const throw(GradeTooLowException, FormIsNotSigned);
-		virtual void		beSigned(const Bureaucrat& employee) throw(GradeTooLowException) = 0;
+		bool				checkExe(Bureaucrat const & executor, bool is_signed, int gradeEx) const throw(GradeTooLowException, FormIsNotSigned);
+		virtual void		execute(Bureaucrat const & executor) const throw() = 0;
+		virtual void		beSigned(const Bureaucrat& employee) throw(GradeTooLowException);
 		const std::string	getName(void) const throw();
-		bool				getStatus(void) const throw();
-		int					getGradeSign(void) const throw();
-		int					getGradeEx(void) const throw();
+		virtual bool		getStatus(void) const throw();
+		virtual int			getGradeSign(void) const throw();
+		virtual int			getGradeEx(void) const throw();
 
 		virtual Form &		operator=( Form const & rhs );
 

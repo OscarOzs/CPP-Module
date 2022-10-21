@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:19:33 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/20 13:29:10 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/10/20 18:17:50 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include <fstream>
 
 # include "Form.hpp"
 

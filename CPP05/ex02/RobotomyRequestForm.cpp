@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 14:00:42 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/20 14:09:40 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/10/21 10:36:38 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ _signed(false), _gradeSign(72), _gradeEx(45)
 	return;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(char* target) : _target(target),
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : _target(target),
 _signed(false), _gradeSign(72), _gradeEx(45)
 {
 	return;
@@ -67,18 +67,17 @@ std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i )
 		FormStatus = "signed";
 	else
 		FormStatus = "not signed";
-	o << "Form " << i.getName() << " is " << FormStatus << ", need grade "
+	o << "Form Robo is " << FormStatus << ", need grade "
 	<< i.getGradeSign() << " to get signed, and need " << i.getGradeEx()
 	<< " to be executed";
 	return o;
 }
 
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	RobotomyRequestForm::beSigned(const Bureaucrat& employee) throw(GradeTooLowException)
+void		RobotomyRequestForm::beSigned(const Bureaucrat& employee) throw(GradeTooLowException)
 {
 	try
 	{
@@ -98,5 +97,40 @@ void	RobotomyRequestForm::beSigned(const Bureaucrat& employee) throw(GradeTooLow
 	}
 	return;
 }
+
+void		RobotomyRequestForm::execute(Bureaucrat const & executor) const throw()
+{
+	srand(time(0));
+	int randomNbr = rand();
+	if (this->checkExe(executor, this->_signed, this->_gradeEx) == true)
+	{
+		std::cout << "*drilling noises*" << std::endl;
+		if ((randomNbr % 2) == 0)
+			std::cout << this->_target << " has been robotomized" << std::endl;
+		else
+			std::cout << "Robotomy failed.." << std::endl;
+	}
+	return;
+}
+
+/*
+** --------------------------------- ACCESSORS --------------------------------
+*/
+
+bool	RobotomyRequestForm::getStatus(void) const throw()
+{
+	return (this->_signed);
+}
+
+int	RobotomyRequestForm::getGradeSign(void) const throw()
+{
+	return (this->_gradeSign);
+}
+
+int	RobotomyRequestForm::getGradeEx(void) const throw()
+{
+	return (this->_gradeEx);
+}
+
 
 /* ************************************************************************** */

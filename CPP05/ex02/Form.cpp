@@ -98,19 +98,37 @@ std::ostream &			operator<<( std::ostream & o, Form const & i )
 ** --------------------------------- MEMBER FUNCTIONS -------------------------
 */
 
-void	Form::execute(Bureaucrat const & executor) const throw(GradeTooLowException, FormIsNotSigned)
+void		Form::beSigned(const Bureaucrat& employee) throw(GradeTooLowException)
 {
 	try
 	{
-		if (this->_signed == false)
-			throw (Form::FormIsNotSigned());
-		else if (executor.getGrade() > this->_gradeEx)
+		if (employee.getGrade() > this->_gradeSign)
 			throw (Form::GradeTooLowException());
 		else
-		{
-			std::cout << "Bureaucrat " << executor.getName()
-			<< " is able to execute " << this->_name << " form." << std::endl;
-		}
+			this->_signed = true;
+		
+	}
+	catch (const Form::GradeTooLowException& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	return;
+}
+
+bool	Form::checkExe(Bureaucrat const & executor, bool is_signed, int gradeEx) const throw(GradeTooLowException, FormIsNotSigned)
+{
+	try
+	{
+		if (is_signed == false)
+			throw (Form::FormIsNotSigned());
+		else if (executor.getGrade() > gradeEx)
+			throw (Form::GradeTooLowException());
+		else
+			return (true);
 	}
 	catch (const Form::GradeTooLowException & e)
 	{
@@ -124,7 +142,7 @@ void	Form::execute(Bureaucrat const & executor) const throw(GradeTooLowException
 	{
 		std::cout << e.what() << std::endl;
 	}
-	return;
+	return (false);
 }
 
 /*
