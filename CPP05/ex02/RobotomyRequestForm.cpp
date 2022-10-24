@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 14:00:42 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/21 10:36:38 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/10/24 12:20:35 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,18 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-RobotomyRequestForm::RobotomyRequestForm() : _target("test"),
-_signed(false), _gradeSign(72), _gradeEx(45)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form(target, 72, 45)
 {
-	return;
-}
-
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : _target(target),
-_signed(false), _gradeSign(72), _gradeEx(45)
-{
+	setTarget(target);
 	return;
 }
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src ) :
-Form(src), _target(src._target), _gradeSign(72), _gradeEx(45)
+Form(src.getName(), 72, 45)
 {
-	this->_signed = src._signed;
+	setTarget(getTarget());
+	if (src.getStatus() == true)
+		setStatus(true);
 	return;
 }
 
@@ -52,10 +48,9 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm const & rhs )
 {
-	if ( this != &rhs )
-	{
-		this->_signed = rhs._signed;
-	}
+	RobotomyRequestForm tmp(rhs);
+
+	*this = tmp;
 	return (*this);
 }
 
@@ -79,22 +74,10 @@ std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i )
 
 void		RobotomyRequestForm::beSigned(const Bureaucrat& employee) throw(GradeTooLowException)
 {
-	try
-	{
-		if (employee.getGrade() > this->_gradeSign)
-			throw (Form::GradeTooLowException());
-		else
-			this->_signed = true;
-		
-	}
-	catch (const Form::GradeTooLowException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	if (employee.getGrade() > getGradeSign())
+		throw (Form::GradeTooLowException());
+	else
+		setStatus(true);
 	return;
 }
 
@@ -102,34 +85,15 @@ void		RobotomyRequestForm::execute(Bureaucrat const & executor) const throw()
 {
 	srand(time(0));
 	int randomNbr = rand();
-	if (this->checkExe(executor, this->_signed, this->_gradeEx) == true)
+	if (this->checkExe(executor, getStatus(), getGradeEx()) == true)
 	{
 		std::cout << "*drilling noises*" << std::endl;
 		if ((randomNbr % 2) == 0)
-			std::cout << this->_target << " has been robotomized" << std::endl;
+			std::cout << getTarget() << " has been robotomized" << std::endl;
 		else
 			std::cout << "Robotomy failed.." << std::endl;
 	}
 	return;
-}
-
-/*
-** --------------------------------- ACCESSORS --------------------------------
-*/
-
-bool	RobotomyRequestForm::getStatus(void) const throw()
-{
-	return (this->_signed);
-}
-
-int	RobotomyRequestForm::getGradeSign(void) const throw()
-{
-	return (this->_gradeSign);
-}
-
-int	RobotomyRequestForm::getGradeEx(void) const throw()
-{
-	return (this->_gradeEx);
 }
 
 

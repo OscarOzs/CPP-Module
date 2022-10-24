@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:43:46 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/21 12:27:58 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/10/24 12:22:35 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,175 +19,278 @@
 
 void	shrubcpy()
 {
-	Bureaucrat Rick("Rick", 1);
-	ShrubberyCreationForm shrub("file");
-	std::cout << shrub << std::endl;
-	shrub.beSigned(Rick);
-	std::cout << shrub << std::endl;
-	ShrubberyCreationForm shrubcpy(shrub);
-	std::cout << shrubcpy << std::endl;
-	
+	try
+	{
+		Bureaucrat Rick("Rick", 1);
+		ShrubberyCreationForm shrub("file");
+		std::cout << shrub << std::endl;
+		shrub.beSigned(Rick);
+		std::cout << shrub << std::endl;
+		ShrubberyCreationForm shrubcpy(shrub);
+		std::cout << shrubcpy << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	shrubNoSignNoExec()
 {
-	Bureaucrat Rick("Rick", 146);
-	std::cout << Rick << std::endl;
-	ShrubberyCreationForm shrub("file");
-	std::cout << shrub << std::endl;
-	shrub.beSigned(Rick);
-	std::cout << shrub << std::endl;
-	Rick.executeForm(shrub);
-	shrub.execute(Rick);
-	
+	try
+	{
+		Bureaucrat Rick("Rick", 146);
+		std::cout << Rick << std::endl;
+		ShrubberyCreationForm shrub("file");
+		std::cout << shrub << std::endl;
+		shrub.beSigned(Rick);
+		std::cout << shrub << std::endl;
+		Rick.executeForm(shrub);
+		shrub.execute(Rick);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	shrubSignNoExec()
 {
-	Bureaucrat Rick("Rick", 140);
-	std::cout << Rick << std::endl;
-	ShrubberyCreationForm shrub("file");
-	std::cout << shrub << std::endl;
-	shrub.beSigned(Rick);
-	std::cout << shrub << std::endl;
-	Rick.executeForm(shrub);
-	shrub.execute(Rick);
+	try
+	{
+		Bureaucrat Rick("Rick", 140);
+		std::cout << Rick << std::endl;
+		ShrubberyCreationForm shrub("file");
+		std::cout << shrub << std::endl;
+		shrub.beSigned(Rick);
+		std::cout << shrub << std::endl;
+		Rick.executeForm(shrub);
+		shrub.execute(Rick);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	shrubExecButNotSigned()
 {
-	Bureaucrat Rick("Ricks", 1);
-	std::cout << Rick << std::endl;
-	ShrubberyCreationForm shrub("file");
-	std::cout << shrub << std::endl;
-	Rick.executeForm(shrub);
-	shrub.execute(Rick);
+	try
+	{
+		Bureaucrat Rick("Ricks", 1);
+		std::cout << Rick << std::endl;
+		ShrubberyCreationForm shrub("file");
+		std::cout << shrub << std::endl;
+		Rick.executeForm(shrub);
+		shrub.execute(Rick);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	shrubSignAndExec()
 {
-	Bureaucrat Rick("Ricks", 1);
-	std::cout << Rick << std::endl;
-	ShrubberyCreationForm shrub("file");
-	std::cout << shrub << std::endl;
-	shrub.beSigned(Rick);
-	std::cout << shrub << std::endl;
-	Rick.executeForm(shrub);
-	shrub.execute(Rick);
+	try
+	{
+		Bureaucrat Rick("Ricks", 1);
+		std::cout << Rick << std::endl;
+		ShrubberyCreationForm shrub("file");
+		std::cout << shrub << std::endl;
+		shrub.beSigned(Rick);
+		std::cout << shrub << std::endl;
+		Rick.executeForm(shrub);
+		shrub.execute(Rick);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	robocpy()
 {
-	Bureaucrat Rick("Rick", 1);
-	RobotomyRequestForm robo("file");
-	std::cout << robo << std::endl;
-	robo.beSigned(Rick);
-	std::cout << robo << std::endl;
-	RobotomyRequestForm robocpy(robo);
-	std::cout << robocpy << std::endl;
+	try
+	{
+		Bureaucrat Rick("Rick", 1);
+		RobotomyRequestForm robo("file");
+		std::cout << robo << std::endl;
+		robo.beSigned(Rick);
+		std::cout << robo << std::endl;
+		RobotomyRequestForm robocpy(robo);
+		std::cout << robocpy << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	roboNoSignNoExec()
 {
-	Bureaucrat Rick("Rick", 80);
-	std::cout << Rick << std::endl;
-	RobotomyRequestForm robo("file");
-	std::cout << robo << std::endl;
-	robo.beSigned(Rick);
-	std::cout << robo << std::endl;
-	Rick.executeForm(robo);
-	robo.execute(Rick);
+	try
+	{
+		Bureaucrat Rick("Rick", 80);
+		std::cout << Rick << std::endl;
+		RobotomyRequestForm robo("file");
+		std::cout << robo << std::endl;
+		robo.beSigned(Rick);
+		std::cout << robo << std::endl;
+		Rick.executeForm(robo);
+		robo.execute(Rick);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	roboSignNoExec()
 {
-	Bureaucrat Rick("Rick", 70);
-	std::cout << Rick << std::endl;
-	RobotomyRequestForm robo("file");
-	std::cout << robo << std::endl;
-	robo.beSigned(Rick);
-	std::cout << robo << std::endl;
-	Rick.executeForm(robo);
-	robo.execute(Rick);
+	try
+	{
+		Bureaucrat Rick("Rick", 70);
+		std::cout << Rick << std::endl;
+		RobotomyRequestForm robo("file");
+		std::cout << robo << std::endl;
+		robo.beSigned(Rick);
+		std::cout << robo << std::endl;
+		Rick.executeForm(robo);
+		robo.execute(Rick);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	roboExecButNotSigned()
 {
-	Bureaucrat Rick("Ricks", 1);
-	std::cout << Rick << std::endl;
-	RobotomyRequestForm robo("file");
-	std::cout << robo << std::endl;
-	Rick.executeForm(robo);
-	robo.execute(Rick);
+	try
+	{
+		Bureaucrat Rick("Ricks", 1);
+		std::cout << Rick << std::endl;
+		RobotomyRequestForm robo("file");
+		std::cout << robo << std::endl;
+		Rick.executeForm(robo);
+		robo.execute(Rick);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	roboSignAndExec()
 {
-	Bureaucrat Rick("Ricks", 1);
-	std::cout << Rick << std::endl;
-	RobotomyRequestForm robo("file");
-	std::cout << robo << std::endl;
-	robo.beSigned(Rick);
-	std::cout << robo << std::endl;
-	Rick.executeForm(robo);
-	robo.execute(Rick);
+	try
+	{
+		Bureaucrat Rick("Ricks", 1);
+		std::cout << Rick << std::endl;
+		RobotomyRequestForm robo("file");
+		std::cout << robo << std::endl;
+		robo.beSigned(Rick);
+		std::cout << robo << std::endl;
+		Rick.executeForm(robo);
+		robo.execute(Rick);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	presidentcpy()
 {
-	Bureaucrat Rick("Rick", 1);
-	PresidentialPardonForm president("file");
-	std::cout << president << std::endl;
-	president.beSigned(Rick);
-	std::cout << president << std::endl;
-	PresidentialPardonForm presidentcpy(president);
-	std::cout << presidentcpy << std::endl;
+	try
+	{
+		Bureaucrat Rick("Rick", 1);
+		PresidentialPardonForm president("file");
+		std::cout << president << std::endl;
+		president.beSigned(Rick);
+		std::cout << president << std::endl;
+		PresidentialPardonForm presidentcpy(president);
+		std::cout << presidentcpy << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	presidentNoSignNoExec()
 {
-	Bureaucrat Rick("Rick", 50);
-	std::cout << Rick << std::endl;
-	PresidentialPardonForm president("file");
-	std::cout << president << std::endl;
-	president.beSigned(Rick);
-	std::cout << president << std::endl;
-	Rick.executeForm(president);
-	president.execute(Rick);
+	try
+	{
+		Bureaucrat Rick("Rick", 50);
+		std::cout << Rick << std::endl;
+		PresidentialPardonForm president("file");
+		std::cout << president << std::endl;
+		president.beSigned(Rick);
+		std::cout << president << std::endl;
+		Rick.executeForm(president);
+		president.execute(Rick);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	presidentSignNoExec()
 {
-	Bureaucrat Rick("Rick", 10);
-	std::cout << Rick << std::endl;
-	PresidentialPardonForm president("file");
-	std::cout << president << std::endl;
-	president.beSigned(Rick);
-	std::cout << president << std::endl;
-	Rick.executeForm(president);
-	president.execute(Rick);
+	try
+	{
+		Bureaucrat Rick("Rick", 10);
+		std::cout << Rick << std::endl;
+		PresidentialPardonForm president("file");
+		std::cout << president << std::endl;
+		president.beSigned(Rick);
+		std::cout << president << std::endl;
+		Rick.executeForm(president);
+		president.execute(Rick);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	presidentExecButNotSigned()
 {
-	Bureaucrat Rick("Ricks", 1);
-	std::cout << Rick << std::endl;
-	PresidentialPardonForm president("file");
-	std::cout << president << std::endl;
-	Rick.executeForm(president);
-	president.execute(Rick);
+	try
+	{
+		Bureaucrat Rick("Ricks", 1);
+		std::cout << Rick << std::endl;
+		PresidentialPardonForm president("file");
+		std::cout << president << std::endl;
+		Rick.executeForm(president);
+		president.execute(Rick);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void	presidentSignAndExec()
 {
-	Bureaucrat Rick("Ricks", 1);
-	std::cout << Rick << std::endl;
-	PresidentialPardonForm president("file");
-	std::cout << president << std::endl;
-	president.beSigned(Rick);
-	std::cout << president << std::endl;
-	Rick.executeForm(president);
-	president.execute(Rick);
+	try
+	{
+		Bureaucrat Rick("Ricks", 1);
+		std::cout << Rick << std::endl;
+		PresidentialPardonForm president("file");
+		std::cout << president << std::endl;
+		president.beSigned(Rick);
+		std::cout << president << std::endl;
+		Rick.executeForm(president);
+		president.execute(Rick);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 int main()
@@ -203,7 +306,7 @@ int main()
 	std::cout << std::endl;
 	shrubSignAndExec();
 	std::cout << std::endl << std::endl;
-
+	
 	std::cout << "Robotomy test :" << std::endl;
 	robocpy();  // 72Sign 45Ex
 	std::cout << std::endl;

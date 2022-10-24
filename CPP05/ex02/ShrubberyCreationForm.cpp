@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 12:12:44 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/21 10:36:47 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/10/24 12:21:01 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,20 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ShrubberyCreationForm::ShrubberyCreationForm() : _target("test"),
-_signed(false), _gradeSign(145), _gradeEx(137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("Shrubbery", 145, 137)
 {
-	return;
-}
-
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : _target(target),
-_signed(false), _gradeSign(145), _gradeEx(137)
-{
+	setTarget(target);
 	return;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & src ) :
-Form(src), _target(src._target), _gradeSign(145), _gradeEx(137)
+Form("Shrubbery", 145, 137)
 {
-	this->_signed = src._signed;
+	setTarget(getTarget());
+	if (src.getStatus() == true)
+		setStatus(true);
 	return;
 }
-
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -45,17 +40,15 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	return;
 }
 
-
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
 ShrubberyCreationForm &		ShrubberyCreationForm::operator=( ShrubberyCreationForm const & rhs )
 {
-	if ( this != &rhs )
-	{
-		this->_signed = rhs._signed;
-	}
+	ShrubberyCreationForm tmp(rhs);
+
+	*this = tmp;
 	return (*this);
 }
 
@@ -79,31 +72,19 @@ std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i )
 
 void		ShrubberyCreationForm::beSigned(const Bureaucrat& employee) throw(GradeTooLowException)
 {
-	try
-	{
-		if (employee.getGrade() > this->_gradeSign)
-			throw (Form::GradeTooLowException());
-		else
-			this->_signed = true;
-		
-	}
-	catch (const Form::GradeTooLowException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	if (employee.getGrade() > getGradeSign())
+		throw (Form::GradeTooLowException());
+	else
+		setStatus(true);
 	return;
 }
 
 void		ShrubberyCreationForm::execute(Bureaucrat const & executor) const throw()
 {
 	std::ofstream file;
-	std::string fileName = this->_target + "_shrubbery";
+	std::string fileName = getTarget() + "_shrubbery";
 
-	if (this->checkExe(executor, this->_signed, this->_gradeEx) == true)
+	if (this->checkExe(executor, getStatus(), getGradeEx()) == true)
 	{
 		file.open(fileName.c_str(), std::ios::out);
 		file << "                     / / /" << std::endl;
@@ -123,7 +104,7 @@ void		ShrubberyCreationForm::execute(Bureaucrat const & executor) const throw()
 		file << "               /  /       'bq,//:,@@*'   ,*      /  /" << std::endl;
 		file << "                          ,p$q8,:@)'  /p*'      /" << std::endl;
 		file << "                   /     '  / '@@Pp@@*'    /  /" << std::endl;
-		file << "                    /  / //    Y7'.'     /  /" << std::endl;
+		file << "                    /  / //    Y7' = true;.'     /  /" << std::endl;
 		file << "                              :@):." << std::endl;
 		file << "                             .:@:'." << std::endl;
 		file << "                           .::(@:.  " << std::endl;
@@ -131,25 +112,5 @@ void		ShrubberyCreationForm::execute(Bureaucrat const & executor) const throw()
 	}
 	return;
 }
-
-/*
-** --------------------------------- ACCESSORS --------------------------------
-*/
-
-bool	ShrubberyCreationForm::getStatus(void) const throw()
-{
-	return (this->_signed);
-}
-
-int	ShrubberyCreationForm::getGradeSign(void) const throw()
-{
-	return (this->_gradeSign);
-}
-
-int	ShrubberyCreationForm::getGradeEx(void) const throw()
-{
-	return (this->_gradeEx);
-}
-
 
 /* ************************************************************************** */

@@ -16,38 +16,18 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Form::Form() : _name("Unknow"), _signed(false), _gradeSign(50), _gradeEx(10) 
-{
-	return;
-}
-
-Form::Form(const std::string name, int gradeSignMin, int gradeExMin)
+Form::Form(const std::string name, const int gradeSignMin, const int gradeExMin)
 throw(GradeTooHighException, GradeTooLowException) :
 _name(name), _signed(false), _gradeSign(gradeSignMin), _gradeEx(gradeExMin)
 {
-	try
-	{
-		if (gradeSignMin > 150)
-			throw (Form::GradeTooLowException());
-		else if (gradeSignMin < 1)
-			throw (Form::GradeTooHighException());
-		else if (gradeExMin > 150)
-			throw (Form::GradeTooLowException());
-		else if (gradeExMin < 1)
-			throw (Form::GradeTooHighException());
-	}
-	catch (GradeTooHighException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (GradeTooLowException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	if (gradeSignMin > 150)
+		throw (Form::GradeTooLowException());
+	else if (gradeSignMin < 1)
+		throw (Form::GradeTooHighException());
+	else if (gradeExMin > 150)
+		throw (Form::GradeTooLowException());
+	else if (gradeExMin < 1)
+		throw (Form::GradeTooHighException());
 	return;
 }
 
@@ -100,54 +80,44 @@ std::ostream &			operator<<( std::ostream & o, Form const & i )
 
 void		Form::beSigned(const Bureaucrat& employee) throw(GradeTooLowException)
 {
-	try
-	{
-		if (employee.getGrade() > this->_gradeSign)
-			throw (Form::GradeTooLowException());
-		else
-			this->_signed = true;
-		
-	}
-	catch (const Form::GradeTooLowException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	if (employee.getGrade() > this->_gradeSign)
+		throw (Form::GradeTooLowException());
+	else
+		this->_signed = true;
 	return;
 }
 
 bool	Form::checkExe(Bureaucrat const & executor, bool is_signed, int gradeEx) const throw(GradeTooLowException, FormIsNotSigned)
 {
-	try
-	{
-		if (is_signed == false)
-			throw (Form::FormIsNotSigned());
-		else if (executor.getGrade() > gradeEx)
-			throw (Form::GradeTooLowException());
-		else
-			return (true);
-	}
-	catch (const Form::GradeTooLowException & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (const Form::FormIsNotSigned & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (const std::exception & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	if (is_signed == false)
+		throw (Form::FormIsNotSigned());
+	else if (executor.getGrade() > gradeEx)
+		throw (Form::GradeTooLowException());
+	else
+		return (true);
 	return (false);
 }
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
+
+void	Form::setTarget(const std::string target) throw()
+{
+	this->_target = target;
+	return;
+}
+
+void	Form::setStatus(bool status) throw()
+{
+	this->_signed = status;
+	return;
+}
+
+std::string	Form::getTarget() const throw()
+{
+	return (this->_target);
+}
 
 const std::string	Form::getName(void) const throw()
 {
