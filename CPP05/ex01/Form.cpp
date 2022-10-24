@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:12:50 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/17 18:26:12 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/10/24 12:28:19 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,14 @@ Form::Form(const std::string name, int gradeSignMin, int gradeExMin)
 throw(GradeTooHighException, GradeTooLowException) :
 _name(name), _signed(false), _gradeSign(gradeSignMin), _gradeEx(gradeExMin)
 {
-	try
-	{
-		if (gradeSignMin > 150)
-			throw (Form::GradeTooLowException());
-		else if (gradeSignMin < 1)
-			throw (Form::GradeTooHighException());
-		else if (gradeExMin > 150)
-			throw (Form::GradeTooLowException());
-		else if (gradeExMin < 1)
-			throw (Form::GradeTooHighException());
-	}
-	catch (GradeTooHighException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (GradeTooLowException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	if (gradeSignMin > 150)
+		throw (Form::GradeTooLowException());
+	else if (gradeSignMin < 1)
+		throw (Form::GradeTooHighException());
+	else if (gradeExMin > 150)
+		throw (Form::GradeTooLowException());
+	else if (gradeExMin < 1)
+		throw (Form::GradeTooHighException());
 	return;
 }
 
@@ -102,22 +87,10 @@ std::ostream &			operator<<( std::ostream & o, Form const & i )
 
 void	Form::beSigned(const Bureaucrat& employee) throw(GradeTooLowException)
 {
-	try
-	{
-		if (employee.getGrade() > this->_gradeSign)
-			throw (Form::GradeTooLowException());
-		else
-			this->_signed = true;
-		
-	}
-	catch (const Form::GradeTooLowException& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	if (employee.getGrade() > this->_gradeSign)
+		throw (Form::GradeTooLowException());
+	else
+		this->_signed = true;
 	return;
 }
 

@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:19:27 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/19 11:44:20 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/10/24 12:26:55 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,18 @@ Bureaucrat::Bureaucrat() : _name("Unknow Bureaucrat"), _grade(150)
 Bureaucrat::Bureaucrat(const std::string name, int grade) :
 _name(name)
 {
-	try
-	{
-		if (grade > 150)
-			throw (Bureaucrat::GradeTooLowException());
-		else if (grade < 1)
-			throw(Bureaucrat::GradeTooHighException());
-		else
-			this->_grade = grade;
-	}
-	catch (GradeTooHighException & e)
-	{
-		this->_grade = 1;
-		std::cout << e.what() << std::endl;
-	}
-	catch (GradeTooLowException & e)
+	if (grade > 150)
 	{
 		this->_grade = 150;
-		std::cout << e.what() << std::endl;
+		throw (Bureaucrat::GradeTooLowException());
 	}
-	catch (std::exception & e)
+	else if (grade < 1)
 	{
-		std::cout << e.what() << std::endl;
+		this->_grade = 1;
+		throw(Bureaucrat::GradeTooHighException());
 	}
+	else
+		this->_grade = grade;
 	return;
 }
 
@@ -105,45 +94,23 @@ int		Bureaucrat::getGrade() const throw()
 
 void	Bureaucrat::upGrade() throw(GradeTooHighException)
 {
-	try
+	if ((this->_grade - 1) < 1)
 	{
-		if ((this->_grade - 1) < 1)
-		{
-			throw (Bureaucrat::GradeTooHighException());
-		}
-		else
-			this->_grade--;
+		throw (Bureaucrat::GradeTooHighException());
 	}
-	catch (GradeTooHighException & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (std::exception & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	else
+		this->_grade--;
 	return;
 }
 
 void	Bureaucrat::downGrade() throw(GradeTooLowException)
 {
-	try
+	if ((this->_grade + 1) > 150)
 	{
-		if ((this->_grade + 1) > 150)
-		{
-			throw (Bureaucrat::GradeTooLowException());
-		}
-		else
-			this->_grade++;
+		throw (Bureaucrat::GradeTooLowException());
 	}
-	catch (GradeTooLowException & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (std::exception & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	else
+		this->_grade++;
 	return;
 }
 
