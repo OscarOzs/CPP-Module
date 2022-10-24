@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:43:46 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/19 09:00:12 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/10/24 12:38:19 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,66 +15,104 @@
 // Constructor grade too low
 void	gradeTooLow()
 {
-	Bureaucrat Rick("Rick", 2500);
+	try
+	{
+		Bureaucrat Rick("Rick", 2500);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 // Constructor grade too high
 void	gradeTooHigh()
 {
-	Bureaucrat Rick("Rick", 0);
+	try
+	{
+		Bureaucrat Rick("Rick", 0);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 // upgrade too high
 void	upgradeFailed()
 {
-	Bureaucrat Rick("Rick", 5);
-
-	for (int i = 0; i < 5; i++)
+	try
 	{
-		Rick.upGrade();
-		std::cout << Rick << std::endl;
+		Bureaucrat Rick("Rick", 5);
+		for (int i = 0; i < 5; i++)
+		{
+			Rick.upGrade();
+			std::cout << Rick << std::endl;
+		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
 	}
 }
 
 // upgrade too low
 void	downgradeFailed()
 {
-	Bureaucrat Rick("Rick", 140);
-
-	for (int i = 0; i < 11; i++)
+	try
 	{
-		Rick.downGrade();
-		std::cout << Rick << std::endl;
+		Bureaucrat Rick("Rick", 140);
+		for (int i = 0; i < 11; i++)
+		{
+			Rick.downGrade();
+			std::cout << Rick << std::endl;
+		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
 	}
 }
 
 // Copy constructor
 void	cpyConstructorTest()
 {
-	Bureaucrat Rick("Rick", 150);
-	Bureaucrat Ricko(Rick);
-
-	std::cout << Ricko << std::endl;
+	try
+	{
+		Bureaucrat Rick("Rick", 150);
+		Bureaucrat Ricko(Rick);
+		std::cout << Ricko << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 // Assignation operator
 void	assignTest()
 {
-	Bureaucrat Rick("Rick", 1);
-	Bureaucrat Ricko("Ricko", 150);
-
-	std::cout << Ricko << std::endl;
-	Ricko = Rick;
-	std::cout << Ricko << std::endl;
+	try
+	{
+		Bureaucrat Rick("Rick", 1);
+		Bureaucrat Ricko("Ricko", 150);
+		std::cout << Ricko << std::endl;
+		Ricko = Rick;
+		std::cout << Ricko << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	// Ricko ne change pas de nom car _name est const
 }
 
 int main(void)
 {
-	// gradeTooLow();
-	// gradeTooHigh();
-	// upgradeFailed();
-	// downgradeFailed();
-	// cpyConstructorTest();
-	// assignTest();
+	gradeTooLow();
+	gradeTooHigh();
+	upgradeFailed();
+	downgradeFailed();
+	cpyConstructorTest();
+	assignTest();
 }
