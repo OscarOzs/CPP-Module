@@ -53,7 +53,7 @@ class Form
 		Form(const std::string name, const int gradeSignMin, const int gradeExMin)
 			throw(GradeTooHighException, GradeTooLowException);
 		Form( Form const & src );
-		~Form();
+		virtual ~Form();
 		
 		bool				checkExe(Bureaucrat const & executor, bool is_signed, int gradeEx) const throw(GradeTooLowException, FormIsNotSigned);
 		virtual void		execute(Bureaucrat const & executor) const throw() = 0;
