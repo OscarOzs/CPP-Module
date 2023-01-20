@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:58:05 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/09/21 12:53:42 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:55:27 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 void	Zombie::announce(void)
 {
 	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-	return;
-}
-
-void	delete_function(Zombie* zombie_to_delete)
-{
-	delete zombie_to_delete;
 	return;
 }
 
