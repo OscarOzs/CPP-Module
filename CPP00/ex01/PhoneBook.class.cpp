@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:46:06 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/09/20 13:42:38 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:21:11 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ static bool	is_str_digit(std::string str)
 {
 	for (unsigned int i = 0; i < (str.length()); i++)
 	{
-		if (isdigit(str[i]) == true)
-			return (true);
+		if (isdigit(str[i]) == false)
+			return (false);
 	}
-	return (false);
+	return (true);
 }
 
 void	PhoneBook::add_first_name(void)
