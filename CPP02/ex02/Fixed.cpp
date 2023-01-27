@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 11:01:37 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/03 16:05:11 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/01/27 15:06:32 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ bool	Fixed::operator>(Fixed const &rhs) const
 		return (false);
 }
 
-bool	Fixed::operator<(Fixed const &rhs) const // DONE
+bool	Fixed::operator<(Fixed const &rhs) const
 {
 	if (this->_FixedPointNumber < rhs._FixedPointNumber)
 		return (true);
@@ -56,7 +56,7 @@ bool	Fixed::operator<(Fixed const &rhs) const // DONE
 		return (false);
 }
 
-bool	Fixed::operator>=(Fixed const &rhs) const // DONE
+bool	Fixed::operator>=(Fixed const &rhs) const
 {
 	if (this->_FixedPointNumber >= rhs._FixedPointNumber)
 		return (true);
@@ -64,7 +64,7 @@ bool	Fixed::operator>=(Fixed const &rhs) const // DONE
 		return (false);
 }
 
-bool	Fixed::operator<=(Fixed const &rhs) const // DONE
+bool	Fixed::operator<=(Fixed const &rhs) const
 {
 	if (this->_FixedPointNumber <= rhs._FixedPointNumber)
 		return (true);
@@ -72,7 +72,7 @@ bool	Fixed::operator<=(Fixed const &rhs) const // DONE
 		return (false);
 }
 
-bool	Fixed::operator==(Fixed const &rhs) const // DONE
+bool	Fixed::operator==(Fixed const &rhs) const
 {
 	if (this->_FixedPointNumber == rhs._FixedPointNumber)
 		return (true);
@@ -80,7 +80,7 @@ bool	Fixed::operator==(Fixed const &rhs) const // DONE
 		return (false);
 }
 
-bool	Fixed::operator!=(Fixed const &rhs) const // DONE
+bool	Fixed::operator!=(Fixed const &rhs) const
 {
 	if (this->_FixedPointNumber != rhs._FixedPointNumber)
 		return (true);
@@ -91,7 +91,7 @@ bool	Fixed::operator!=(Fixed const &rhs) const // DONE
 Fixed	Fixed::operator+(Fixed const &rhs) const
 {
 	return Fixed((float)(this->_FixedPointNumber + rhs.getFixedPointNumber()) / 256);
-}
+} // Retourne une instance de Fixed utilisant le constructeur avec un float
 
 Fixed	Fixed::operator-(Fixed const &rhs) const
 {
@@ -99,7 +99,7 @@ Fixed	Fixed::operator-(Fixed const &rhs) const
 
 	res._FixedPointNumber = this->_FixedPointNumber - rhs._FixedPointNumber;
 	return (res);
-}
+} // Retourne une instance de Fixed utilisant le constructeur par defaut
 
 Fixed	Fixed::operator*(Fixed const &rhs) const
 {
@@ -115,14 +115,14 @@ Fixed	Fixed::operator/(Fixed const &rhs) const
 
 	if (rhs.toFloat() == 0)
 	{
-		std::cerr << "Division by 0 is not possible" << std::endl;
+		std::cout << "Division by 0 is not possible" << std::endl;
 		return (res);
 	}
 	res._FixedPointNumber = roundf((this->toFloat() / rhs.toFloat()) * 256);
 	return (res);
 }
 
-Fixed	Fixed::operator++(int)
+Fixed	Fixed::operator++(int) // Operateur post incrementation
 {
 	Fixed	res(*this);
 
@@ -130,13 +130,13 @@ Fixed	Fixed::operator++(int)
 	return (res);
 }
 
-Fixed &	Fixed::operator++(void)
+Fixed &	Fixed::operator++(void) // Operateur pre incrementation
 {
 	this->_FixedPointNumber++;
 	return (*this);
 }
 
-Fixed	Fixed::operator--(int)
+Fixed	Fixed::operator--(int) // Operateur post decrementation
 {
 	Fixed	res(*this);
 
@@ -144,7 +144,7 @@ Fixed	Fixed::operator--(int)
 	return (res);
 }
 
-Fixed &	Fixed::operator--(void)
+Fixed &	Fixed::operator--(void) // Operateur pre decrementation
 {
 	this->_FixedPointNumber--;
 	return (*this);
