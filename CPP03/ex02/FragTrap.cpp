@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:57:47 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/05 18:14:40 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:28:45 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ FragTrap::FragTrap()
 	return;
 }
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "Parametric FragTrap constructor called" << std::endl;
 	this->_name = name;
@@ -60,6 +60,6 @@ FragTrap & FragTrap::operator=(FragTrap & rhs)
 
 void	FragTrap::highFivesGuys()
 {
-	std::cout << "FragTrap " << this->_name << " give an high fives to his Trap friend." << std::endl;
+	std::cout << "FragTrap " << this->_name << " give a hand to high fives him." << std::endl;
 	return;
 }
