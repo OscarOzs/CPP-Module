@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:08:01 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/04 11:19:40 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:02:16 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	OscarRepair(void)
 
 int main(void)
 {
-	// JohnExhausted();
-	// RicoDies();
-	// OscarRepair();
+	JohnExhausted();
+	RicoDies();
+	OscarRepair();
 	return(0);
 }
