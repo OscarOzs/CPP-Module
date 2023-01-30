@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:44:25 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/05 13:17:16 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:19:50 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ ScavTrap::ScavTrap()
 	return;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "Parametric ScavTrap constructor called" << std::endl;
 	this->_name = name;
