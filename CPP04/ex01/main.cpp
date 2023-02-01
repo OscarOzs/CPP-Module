@@ -6,11 +6,11 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 09:11:47 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/14 10:05:31 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:05:36 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AAnimal.hpp"
+#include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include "Brain.hpp"
@@ -18,8 +18,8 @@
 int main(void)
 {
 	std::cout << "Basic test :" << std::endl;
-	const AAnimal* dog = new Dog();
-	const AAnimal* cat = new Cat();
+	const Animal* dog = new Dog();
+	const Animal* cat = new Cat();
 
 	std::cout << dog->getType() << " : ";
 	dog->makeSound();
@@ -28,7 +28,7 @@ int main(void)
 	
 
 	std::cout << std::endl << "Array of 5 dogs :" << std::endl;
-	AAnimal* animals[10];
+	Animal* animals[10];
 	for (int i = 0; i < 5; i++)
 		animals[i] = new Dog();
 	std::cout << std::endl << "Array of 5 cats :" << std::endl;

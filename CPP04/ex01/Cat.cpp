@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:05:22 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/25 11:31:30 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:06:45 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Cat::Cat()
 	return;
 }
 
-Cat::Cat(Cat & src) : AAnimal(src)
+Cat::Cat(Cat & src) : Animal(src)
 {
 	this->_brain = new Brain(*(src._brain));
 	std::cout << "Copy Cat constructor called" << std::endl;

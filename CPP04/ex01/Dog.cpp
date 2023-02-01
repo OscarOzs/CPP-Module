@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:09:58 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/25 11:31:03 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:06:52 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Dog::Dog()
 	return;
 }
 
-Dog::Dog(Dog & src) : AAnimal(src)
+Dog::Dog(Dog & src) : Animal(src)
 {
 	this->_brain = new Brain(*(src._brain));
 	std::cout << "Dog copy constructor called" << std::endl;

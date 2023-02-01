@@ -6,17 +6,17 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:09:44 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/13 17:50:59 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:06:06 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOG_HPP
 # define DOG_HPP
 
-# include "AAnimal.hpp"
+# include "Animal.hpp"
 # include "Brain.hpp"
 
-class Dog : public AAnimal
+class Dog : public Animal
 {
 public:
 	Dog();
