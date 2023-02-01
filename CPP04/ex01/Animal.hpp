@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AAnimal.hpp                                        :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 09:14:35 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/02/01 18:05:52 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:32:50 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ public:
 	Animal &		operator=(Animal & rhs);
 	virtual void	makeSound() const;
 	std::string		getType() const;
-	virtual std::string	getBrain() const = 0;
-	virtual void	setBrain(std::string idea) = 0;
+	virtual std::string	getBrain() const;
+	virtual void	setBrain(std::string idea);
 protected:
 	std::string type;
 };

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AAnimal.cpp                                        :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 09:20:39 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/02/01 18:05:23 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:42:53 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,17 @@ void	Animal::makeSound() const
 std::string	Animal::getType() const
 {
 	return (this->type);
+}
+
+std::string Animal::getBrain() const
+{
+	std::cout << "Animal base class does not have brain" << std::endl;
+	return (NULL);
+}
+
+void	Animal::setBrain(std::string idea)
+{
+	std::cout << "Animal base class does not have brain, ";
+	std::cout << idea << " Cannot be set";
+	return;
 }
