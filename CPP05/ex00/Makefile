@@ -6,11 +6,11 @@
 #    By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/14 17:44:04 by oozsertt          #+#    #+#              #
-#    Updated: 2022/10/14 19:00:26 by oozsertt         ###   ########.fr        #
+#    Updated: 2023/02/03 15:46:57 by oozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = BureaucratWannabe.exe
+NAME = BureaucratWannabe
 
 SRCS = main.cpp \
 Bureaucrat.cpp
