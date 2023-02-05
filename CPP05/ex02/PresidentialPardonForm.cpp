@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 14:17:24 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/24 12:20:13 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/05 18:25:00 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 PresidentialPardonForm &				PresidentialPardonForm::operator=( PresidentialPardonForm const & rhs )
 {
-	PresidentialPardonForm tmp(rhs);
-
-	*this = tmp;
+	if (this != &rhs)
+	{
+		PresidentialPardonForm tmp(rhs);
+		*this = tmp;
+	}
 	return *this;
 }
 

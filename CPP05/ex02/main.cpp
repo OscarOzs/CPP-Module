@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:43:46 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/24 12:22:35 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/05 18:30:26 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void	robocpy()
 	try
 	{
 		Bureaucrat Rick("Rick", 1);
+		std::cout << Rick << std::endl;
 		RobotomyRequestForm robo("file");
 		std::cout << robo << std::endl;
 		robo.beSigned(Rick);

@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 14:00:42 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/24 12:20:35 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/05 18:24:43 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm const & rhs )
 {
-	RobotomyRequestForm tmp(rhs);
-
-	*this = tmp;
+	if (this != &rhs)
+	{
+		RobotomyRequestForm tmp(rhs);
+		*this = tmp;
+	}
 	return (*this);
 }
 
