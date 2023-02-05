@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 12:12:44 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/10/24 12:21:01 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/05 18:55:45 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,11 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm &		ShrubberyCreationForm::operator=( ShrubberyCreationForm const & rhs )
 {
-	ShrubberyCreationForm tmp(rhs);
-
-	*this = tmp;
+	if (this != &rhs)
+	{
+		ShrubberyCreationForm tmp(rhs);
+		*this = tmp;
+	}
 	return (*this);
 }
 
