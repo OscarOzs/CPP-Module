@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 16:08:54 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/11/02 21:07:09 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:27:11 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	identify(Base* p)
 		std::cout << "B" << std::endl;
 	else if (c != NULL)
 		std::cout << "C" << std::endl;
+	else
+		std::cout << "Unknow" << std::endl;
 }
 
 void	identify(Base & p)

@@ -6,11 +6,11 @@
 #    By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 11:38:20 by oozsertt          #+#    #+#              #
-#    Updated: 2022/11/02 18:38:18 by oozsertt         ###   ########.fr        #
+#    Updated: 2023/02/06 13:28:41 by oozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Typeidentifier.exe
+NAME = Typeidentifier
 
 SRCS_PATH =	$(shell find srcs -type d)
 
@@ -26,7 +26,7 @@ SRCS = 	main.cpp generate.cpp identify.cpp A.cpp B.cpp C.cpp Base.cpp
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.cpp=%.o))
 
-CFLAGS = -std=c++98 -Wall -Wextra -Werror=unused-but-set-parameter -g3
+CFLAGS = -std=c++98 -Wall -Wextra -Werror=unused-parameter -g3
 
 BFLAGS =	-DBONUS=1
 NOBFLAGS =	-DBONUS=0
