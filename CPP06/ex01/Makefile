@@ -6,11 +6,11 @@
 #    By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 11:38:20 by oozsertt          #+#    #+#              #
-#    Updated: 2022/11/02 11:44:35 by oozsertt         ###   ########.fr        #
+#    Updated: 2023/02/06 13:07:17 by oozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Serialization.exe
+NAME = Serialization
 
 SRCS_PATH =	$(shell find srcs -type d)
 
