@@ -6,7 +6,7 @@
 #    By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 11:38:20 by oozsertt          #+#    #+#              #
-#    Updated: 2023/02/07 13:41:07 by oozsertt         ###   ########.fr        #
+#    Updated: 2023/02/07 16:02:44 by oozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ BUILD = .build
 
 vpath %.cpp $(foreach dir, $(SRCS_PATH), $(dir):)
 
-SRCS = 	main.cpp
+SRCS = 	main.cpp ScalarConversion.cpp
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.cpp=%.o))
 

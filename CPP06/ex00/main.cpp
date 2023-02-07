@@ -6,13 +6,16 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:38:12 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/02/07 13:40:29 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/07 16:03:32 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConversion.hpp"
 
-int main(void)
+int main(int ac, char **av)
 {
-	std::cout << "Coucou" << std::endl;
+	if (ac == 2)
+		ScalarConversion tmp(av[1]);
+	else
+		std::cout << "Invalid number of argument" << std::endl;
 }
