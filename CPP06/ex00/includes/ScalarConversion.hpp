@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScalarConversion.hpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 13:38:12 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/02/07 13:40:29 by oozsertt         ###   ########.fr       */
+/*   Created: 2023/02/07 13:39:44 by oozsertt          #+#    #+#             */
+/*   Updated: 2023/02/07 13:40:17 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConversion.hpp"
+#ifndef SCALARCONVERSION_HPP
+# define SCALARCONVERSION_HPP
 
-int main(void)
-{
-	std::cout << "Coucou" << std::endl;
-}
+# include <stdint.h>
+# include <iostream>
+# include <string.h>
+
+#endif
