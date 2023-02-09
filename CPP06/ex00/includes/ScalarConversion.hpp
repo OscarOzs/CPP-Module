@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:39:44 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/02/07 16:13:12 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/09 04:19:16 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ public:
 	double	getDoubleValue() const;
 
 	ScalarConversion & operator=( ScalarConversion const & rhs);
+	
 private:
 	std::string _input;
 	char		_charValue;
@@ -37,6 +38,7 @@ private:
 	double		_doubleValue;
 
 	bool	isInputValid() const;
+	static bool	isPlusInputValid(std::string str);
 	// void	identifyType();
 };
 
