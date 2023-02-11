@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:39:44 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/02/10 05:50:59 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/11 05:03:00 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,20 @@ private:
 	int			_intValue;
 	float		_floatValue;
 	double		_doubleValue;
+	std::string *_output_tab;
 
-	bool	isInputValid() const;
-	static bool	isSignInputValid(std::string str, char sign);
-	static bool	isFloatInputValid(std::string str);
-	static bool	isPointInputValid(std::string str);
-	static bool	isNumberInRange(std::string str);
+	bool	_isLiteralNickname;
+	bool	_isChar;
+	bool	_isInt;
+	bool	_isFloat;
+	bool	_isDouble;
+
+	bool	parseAndCheckInput();
+	static bool	isNumberAnInt(std::string str);
+	static bool	isNumberAnFloat(std::string str);
+	static bool	isNumberAnDouble(std::string str);
+	
+	static bool	isNumberInIntRange(std::string str);
 	// void	identifyType();
 };
 

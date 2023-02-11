@@ -8,24 +8,60 @@ et afficher sa valeur dans ces 4 types suivant :
 
 
 ROAD MAP :
-- verifier si la string envoye est valide (afficher un msg le cas echeant)
-- parsing pour identifier le type reel de la string
-- Convertir ce type dans les trois autres types
+- verifier si la string envoye est valide + parsing (afficher un msg le cas echeant)
+- 
 
 
-IsInputValid :
-- len de l'input == 0
-- input != pseudos literaux
-- contient autre chose que 'f' '.' '-' '+' et "0123456789"
-- verifier que le '-' et le '+' sont bien suivis d'un chiffre et a l'index 0
-- verifier que le 'f' est bien le dernier char et est precedé d'un chiffre
-- verifier que le '.' est bien precedé et suivis de chiffre
-- input > INTMAX (utilisé atol et limit.h)
-- input < INTMIN (utilisé atol et limit.h)
+
+_______________________________________________________________________
+
+Distinction de chaque type :
+- char :
+	- len de 1 et different d'un digit
+- float :
+	- doit posseder 'f' a len - 1
+- double : 
+	- doit avoir un '.'
+- int :
+	- si checker int return true -> return true
+else :
+	- return false
 
 
-- gerer le cas ou il y a '.' et 'f'
+A Checker dans chaque type :
+- int :
+	- if (str[i] == "+-") -> i++ -> min_len = 2 ekse min_len = 1
+	- if min_len < str_len == false
+	- si le reste pas digit jusqu'a str_len - 1 == false
+	- si nombre en range INTMAX INTMIN
+- float :
+	- if (str[i] == "+-") -> i++ -> min_len = 4;
+		else min_len = 3;
+	- if min_len < str_len return false
+	- si il n'y a pas au moins 1 '.' return false
+	- check si il y a plusieurs '.' ou 'f' dans str -> return false
+	- if str[i] == '.' -> if (*1 checkDotFirstFloat() == false) return false
+	- loop sur str[i]
+		- si str[i] == '.' -> if (*2 checkDotFloat() == false) return false
+- double :
+	- si (str[i] == "+-") -> i++ -> min_len = 3 else min_len = 2
+	- if min_len < str_len return false
+	- si il n'y a pas au moins 1 '.' return false
+	- check si il y a plusieurs '.' -> return false
+	- if (str[i] == '.' -> if (*3 checkDotFirstDouble() == false) return false
+	- loop sur str[i]
+		si str[i] == '.' -> if (*4 checkDotDouble() == false) return false
 
-- gerer le cas ou il y a '-' et '.'
 
-- gerer le + de la meme maniere que le -
+*1 checkDotFirstFloat :
+	si str[i + 1] n'est pas digit return false
+*2 checkDotFloat :
+	si str[i - 1] n'est pas digit return false
+	si str[i + 1] n'est ni digit ni == 'f' return false
+
+*3 CheckDotFirstDouble :
+	si str[i + 1] n'est pas digit return false
+*4 CheckDotDouble :
+	si str[i + 1] n'est pas digit return false
+	si str[i - 1] n'est pas digit return false
+
