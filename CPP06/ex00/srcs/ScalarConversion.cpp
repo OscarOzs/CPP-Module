@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:28:09 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/02/11 05:18:43 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/12 16:06:41 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ _isDouble(false)
 		this->_output_tab[1] = "int: ";
 		this->_output_tab[2] = "float: ";
 		this->_output_tab[3] = "double: ";
+		convertAndFillTab();
 	}
 	return;
 }
@@ -77,10 +78,10 @@ ScalarConversion & ScalarConversion::operator=(ScalarConversion const & rhs)
 
 std::ostream &	operator<<(std::ostream & o, ScalarConversion const & rhs)
 {
-	o << "char: " << rhs.getCharValue() << std::endl;
-	o << "int: " << rhs.getIntValue() << std::endl;
-	o << "float: " << rhs.getFloatValue() << std::endl;
-	o << "double: " << rhs.getDoubleValue();
+	o << rhs.getCharTab() << std::endl;
+	o << rhs.getIntTab() << std::endl;
+	o << rhs.getFloatTab() << std::endl;
+	o << rhs.getDoubleTab();
 	return o;
 }
 
@@ -106,8 +107,30 @@ double	ScalarConversion::getDoubleValue() const
 	return (this->_doubleValue);
 }
 
+std::string	ScalarConversion::getCharTab() const
+{
+	return (this->_output_tab[0]);
+}
+
+std::string	ScalarConversion::getIntTab() const
+{
+	return (this->_output_tab[1]);
+}
+
+std::string	ScalarConversion::getFloatTab() const
+{
+	return (this->_output_tab[2]);
+}
+
+std::string	ScalarConversion::getDoubleTab() const
+{
+	return (this->_output_tab[3]);
+}
+
 ////////////////////////////////////// METHOD /////////////////////////////////
 
+
+////// PARSING
 bool	ScalarConversion::parseAndCheckInput()
 {
 	std::string str;
@@ -244,13 +267,15 @@ bool	ScalarConversion::isNumberAnFloat(std::string str)
 				return (false);
 			else if ((isdigit(str[i + 1]) == 0)
 				&& str[i + 1] != 'f')
-				return (false);
+					return (false);
 			else
 				i++;
 		}
 		else
 			return (false);
 	}
+	if (isNumberInFloatRange(str) == false)
+		return (false);
 	return (true);
 }
 
@@ -293,7 +318,127 @@ bool	ScalarConversion::isNumberInIntRange(std::string str)
 		return (true);
 }
 
-// void	ScalarConversion::identifyType()
-// {
-// 	return;
-// }
+bool	ScalarConversion::isNumberInFloatRange(std::string str)
+{
+	char	*endptr;
+
+	double number = std::strtod(str.c_str(), & endptr);
+	if (number > FLT_MAX)
+		return (false);
+	else if (number < FLT_MIN && number != 0)
+		return (false);
+	else
+		return (true);
+}
+
+///// CONVERSION
+void	ScalarConversion::convertAndFillTab()
+{
+	char*	endptr;
+
+	if (this->_isChar == true)
+	{
+		this->_charValue = static_cast<char>(this->_input[0]);
+		fillCharTab();
+		this->_intValue = static_cast<int>(this->_charValue);
+		fillIntTab();
+		this->_floatValue = static_cast<float>(this->_charValue); // add .0f
+		this->_doubleValue = static_cast<double>(this->_charValue); // add .0
+	}
+	else if (this->_isInt == true)
+	{
+		this->_intValue = atoi(this->_input.c_str());
+		this->_charValue = static_cast<char>(this->_intValue);
+		fillCharTab();
+		this->_floatValue = static_cast<float>(this->_intValue); // rajouter .0f
+		this->_doubleValue = static_cast<double>(this->_intValue); // rajouter .0
+		fillIntTab();
+	}
+	else if (this->_isFloat == true)
+	{
+		this->_floatValue = atof(this->_input.c_str());// add ".0f"
+		this->_charValue = static_cast<char>(this->_floatValue);
+		fillCharTab(); // segfault ici
+		this->_intValue = static_cast<int>(this->_floatValue);
+		this->_doubleValue = static_cast<double>(this->_floatValue); // add .0
+	}
+	else if (this->_isDouble == true)
+	{
+		this->_doubleValue = strtod(this->_input.c_str(), &endptr);
+		this->_charValue = static_cast<char>(this->_doubleValue);
+		fillCharTab();
+		this->_intValue = static_cast<int>(this->_doubleValue);
+		this->_floatValue = static_cast<float>(this->_doubleValue);
+	}
+	else
+		fillTabLiteralValue();
+	return;
+}
+
+void	ScalarConversion::fillIntTab()
+{
+	std::ostringstream stream;
+	
+	if (this->_isLiteralNickname == true)
+		this->_output_tab[1] += "impossible";
+	else if (this->_isFloat == true)
+	{
+		if (this->_floatValue > (float)INT_MAX || this->_floatValue < (float)INT_MIN)
+			this->_output_tab[1] += "impossible";
+	}
+	else if (this->_isDouble == true)
+	{
+		if (this->_doubleValue > INT_MAX || this->_doubleValue < INT_MIN)
+			this->_output_tab[1] += "impossible";
+	}
+	else
+	{
+		stream << this->_output_tab[1];
+		stream << this->_intValue;
+		this->_output_tab[1] = stream.str();
+	}
+}
+
+void	ScalarConversion::fillCharTab()
+{
+	int		nbr;
+	std::string toPutInTab;
+
+	nbr = atoi(this->_input.c_str());
+	if (this->_isLiteralNickname == true)
+		this->_output_tab[0] += "impossible";
+	if (nbr > 0 && isprint(nbr) != false)
+	{
+		toPutInTab = std::string(1, this->_charValue);
+		toPutInTab.insert(0, 1, '\'');
+		toPutInTab.insert(2, 1, '\'');
+		this->_output_tab[0] += toPutInTab;
+	}
+	else
+		this->_output_tab[0] += "Non displayable";
+}
+
+void	ScalarConversion::fillTabLiteralValue()
+{
+	std::string str;
+
+	str.assign(this->_input);
+	this->_output_tab[0] += "impossible";
+	this->_output_tab[1] += "impossible";
+	if (str[0] == '+')
+	{
+		this->_output_tab[2] += "+inff";
+		this->_output_tab[3] += "+inf";
+	}
+	else if (str[0] == '-')
+	{
+		this->_output_tab[2] += "inff";
+		this->_output_tab[3] += "+inf";
+	}
+	else
+	{
+		this->_output_tab[2] += "nanf";
+		this->_output_tab[3] += "nan";
+	}
+	return ;
+}
