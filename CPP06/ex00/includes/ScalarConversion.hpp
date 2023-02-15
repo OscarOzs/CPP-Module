@@ -6,16 +6,12 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:39:44 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/02/12 15:35:14 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/15 03:58:22 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCALARCONVERSION_HPP
 # define SCALARCONVERSION_HPP
-
-////tmp
-# define ICI std::cout << "ICI" << std::endl;
-////tmp
 
 # include <iostream>
 # include <sstream>
@@ -24,6 +20,7 @@
 # include <cstdlib>
 # include <cctype>
 # include <float.h>
+# include <cmath>
 
 class ScalarConversion
 {
@@ -32,6 +29,7 @@ public:
 	ScalarConversion(ScalarConversion const & src);
 	~ScalarConversion();
 
+	bool		getIsInputValidBool() const;
 	char		getCharValue() const;
 	int			getIntValue() const;
 	float		getFloatValue() const;
@@ -56,19 +54,23 @@ private:
 	bool	_isInt;
 	bool	_isFloat;
 	bool	_isDouble;
+	bool	_isInputValid;
 
 	bool	parseAndCheckInput();
-	static bool	isNumberAnInt(std::string str);
-	static bool	isNumberAnFloat(std::string str);
-	static bool	isNumberAnDouble(std::string str);
+	bool	isNumberAnInt(std::string str);
+	bool	isNumberAnFloat(std::string str);
+	bool	isNumberAnDouble(std::string str);
 	static bool	isNumberInIntRange(std::string str);
 	static bool	isNumberInFloatRange(std::string str);
-	
+
 	void	convertAndFillTab();
 	void	assignValue();
 	void	fillTabLiteralValue();
 	void	fillCharTab();
 	void	fillIntTab();
+	void	fillFloatTab();
+	void	fillDoubleTab();
+	void	printTab() const;
 };
 
 std::ostream & operator<<(std::ostream & o, ScalarConversion const & i);

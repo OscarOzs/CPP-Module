@@ -6,27 +6,20 @@ et afficher sa valeur dans ces 4 types suivant :
 - float (-inff, +inff, nanf)
 - double (-inf, +inf, nan)
 
-- A GERER : input = -2147483648.f -> input invalid
+Conversions qui peut overflow :
+- Int sur char :
+	INT_MAX && INT_MIN
+- Float sur int :
+	si float > INT_MAX || < INT_MIN
+- Float sur char
+- Double sur float
+- Double sur int
+- Double sur char
 
-ROAD MAP :
-- verifier si la string envoye est valide + parsing (afficher un msg le cas echeant)
-- la convertir en son type reel
-- convertir ce type dans tout les autres types
-- fill le tableau
-- print le tab de string
+ONWORKING :
+- float == INT_MAX -> int affiche INT_MIN et overflow
 
-Les cas a gerer pour l'affichage :
-- Char -> float : ajouter un ".0f".
-- Char -> double : ajouter un ".0".
-- Int -> float : ajouter un ".0f"
-- Int -> double : ajouter un ".0".
-- le Char doit etre entre single quote.
-
-Les cas a gerer pour les conversions invalides :
-- Int -> Char en dehors de range ascii.
-- Double -> float en dehors de range float.
-
-_______________________________________________________________________
+_________________________________________________________________
 PARSING :
 
 Distinction de chaque type :
