@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:28:09 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/02/15 05:21:54 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/17 02:34:40 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -385,10 +385,9 @@ void	ScalarConversion::convertAndFillTab()
 		fillFloatTab();
 		fillDoubleTab();
 	}
-	else if (this->_isInt == true) //
+	else if (this->_isInt == true)
 	{
 		this->_intValue = atoi(this->_input.c_str());
-		
 		this->_charValue = static_cast<char>(this->_intValue);
 		this->_floatValue = static_cast<float>(this->_intValue);
 		this->_doubleValue = static_cast<double>(this->_intValue);
@@ -399,11 +398,10 @@ void	ScalarConversion::convertAndFillTab()
 	}
 	else if (this->_isFloat == true)
 	{
-		this->_floatValue = atof(this->_input.c_str());
+		this->_floatValue = strtof(this->_input.c_str(), NULL);
 		this->_charValue = static_cast<char>(this->_floatValue);
 		this->_intValue = static_cast<int>(this->_floatValue);
 		this->_doubleValue = static_cast<double>(this->_floatValue);
-		std::cout << std::fixed << this->_floatValue << std::endl;
 		fillCharTab();
 		fillIntTab();
 		fillFloatTab();
@@ -495,26 +493,21 @@ void	ScalarConversion::fillFloatTab()
 		str = tmp.str();
 		if (str.find(".") == std::string::npos)
 			stream << ".0f";
-		else if (str.find("e+") == std::string::npos) // TO DELETE
+		else
 			stream << "f";
 		this->_output_tab[2] = stream.str();
 	}
 	else if (this->_isDouble == true)
 	{
-		if (this->_doubleValue < -FLT_MAX || this->_doubleValue > FLT_MAX)
-			this->_output_tab[2] += "impossible";
+		stream << this->_output_tab[2];
+		stream << std::fixed << this->_floatValue;
+		tmp << this->_floatValue;
+		str = tmp.str();
+		if (str.find(".") == std::string::npos)
+			stream << ".0f";
 		else
-		{
-			stream << this->_output_tab[2];
-			stream << std::fixed << this->_floatValue;
-			tmp << this->_floatValue;
-			str = tmp.str();
-			if (str.find(".") == std::string::npos)
-				stream << ".0f";
-			else if (str.find("e+") == std::string::npos)
-				stream << "f";
-			this->_output_tab[2] = stream.str();
-		}
+			stream << "f";
+		this->_output_tab[2] = stream.str();
 	}
 	else
 	{
@@ -524,7 +517,7 @@ void	ScalarConversion::fillFloatTab()
 		str = tmp.str();
 		if (str.find(".") == std::string::npos)
 			stream << ".0f";
-		else if (str.find("e+") == std::string::npos)
+		else
 			stream << "f";
 		this->_output_tab[2] = stream.str();
 	}
@@ -544,25 +537,27 @@ void	ScalarConversion::fillIntTab()
 	}
 	else if (this->_isFloat == true)
 	{
-		if (this->_floatValue > (float)INT_MAX || this->_floatValue < (float)INT_MIN)
-			this->_output_tab[1] += "impossible";
-		else
+		if (static_cast<long>(this->_floatValue) < INT_MAX
+			&& static_cast<long>(this->_floatValue) > INT_MIN)
 		{
 			stream << this->_output_tab[1];
 			stream << this->_intValue;
 			this->_output_tab[1] = stream.str();
 		}
+		else
+			this->_output_tab[1] += "impossible";
 	}
 	else if (this->_isDouble == true)
 	{
-		if (this->_doubleValue > INT_MAX || this->_doubleValue < INT_MIN)
-			this->_output_tab[1] += "impossible";
-		else
+		if (static_cast<long>(this->_doubleValue) <= INT_MAX
+			&& static_cast<long>(this->_doubleValue) >= INT_MIN)
 		{
 			stream << this->_output_tab[1];
 			stream << this->_intValue;
 			this->_output_tab[1] = stream.str();
 		}
+		else
+			this->_output_tab[1] += "impossible";
 	}
 	else
 	{
