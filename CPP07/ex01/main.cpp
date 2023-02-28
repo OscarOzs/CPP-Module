@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 06:05:02 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/02/25 07:08:52 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/02/28 01:17:05 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,8 @@ int main(void)
 
 	double ddecim[] = {2.1, 21.0, 2.111};
 	iter(ddecim, 3, &print);
+	std::cout << std::endl;
+
+	std::string name = "Rick";
+	iter(&name, 1, &print);
 }
