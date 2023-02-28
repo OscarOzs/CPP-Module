@@ -1,0 +1,33 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/02/28 05:47:03 by oozsertt          #+#    #+#              #
+#    Updated: 2023/02/28 06:45:49 by oozsertt         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = easy_find
+
+SRCS = main.cpp \
+
+OBJS = main.o \
+
+FLAGS = -Wall -Wextra -Werror -std=c++98
+
+all : $(NAME)
+
+$(NAME) : $(BUILD)
+	c++ $(FLAGS) $(SRCS) -c
+	c++ $(FLAGS) $(OBJS) -o $(NAME)
+
+clean :
+	@rm -rf $(OBJS)
+	
+fclean : clean
+	@rm -rf $(NAME)
+	
+re : fclean all
