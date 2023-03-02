@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 01:43:38 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/02/28 04:37:16 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/03/02 03:03:34 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ void	emptyConstructor()
 	
 }
 
-void	intConstructor()
+void	floatConstructor()
 {
 	Array<float> a(10);
 
 	std::cout << "size : " << a.size() << std::endl;
+	a[9] = 4.2f;
 	try
 	{
 		std::cout << "10th T element : " << a[9] << std::endl;
@@ -61,7 +62,8 @@ void	cpyConstructor()
 	
 	try
 	{
-		std::cout << "42th T element : " << (int)c[41] << std::endl;
+		c[41] = 'A';
+		std::cout << "42th T element : " << c[41] << std::endl;
 		std::cout << c[42] << std::endl;
 		
 	}
@@ -89,6 +91,7 @@ void	assignConstructor()
 
 	try
 	{
+		c[9] = 0.42;
 		std::cout << "10th T element : " << c[9] << std::endl;
 		std::cout << c[10] << std::endl;
 		
@@ -101,9 +104,9 @@ void	assignConstructor()
 
 int main(void)
 {
-	emptyConstructor();
-	// intConstructor();
+	// emptyConstructor();
+	// floatConstructor();
 	// cpyConstructor();
-	// assignConstructor();
+	assignConstructor();
 
 }
