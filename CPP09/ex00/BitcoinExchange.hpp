@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:02:38 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/03/24 15:12:32 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:37:25 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fstream>
 # include <string>
 # include <map>
+# include <cstdlib>
 
 class BitcoinExchange
 {

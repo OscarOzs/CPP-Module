@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:02:43 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/03/24 15:13:15 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:37:20 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 BitcoinExchange::BitcoinExchange(char *input) : _database("data.csv")
 {
 	check_file(input);
+	store_database();
 	return ;
 }
 
@@ -75,7 +76,23 @@ void	BitcoinExchange::check_file(char *input) const throw(std::invalid_argument)
 
 void	BitcoinExchange::store_database() throw ()
 {
-	
+	std::ifstream file(this->_database.c_str());
+	std::string	line;
+	std::string	date;
+	std::string	value;
+	std::size_t	pos;
+
+	std::getline(file, line);
+	while (std::getline(file, line))
+	{
+		pos = line.find(',');
+		date = line.substr(0, pos);
+		value = line.substr(pos + 1);
+		this->_data[date] = atof(value.c_str());
+	}
+	std::map<std::string, float>::iterator it;
+	for (it = this->_data.begin(); it != this->_data.end(); it++)
+		std::cout << it->first << "," << it->second << std::endl;
 }
 
 /*

@@ -6,7 +6,7 @@
 #    By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/24 13:27:10 by oozsertt          #+#    #+#              #
-#    Updated: 2023/03/24 14:58:15 by oozsertt         ###   ########.fr        #
+#    Updated: 2023/03/28 17:03:16 by oozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS = main.cpp BitcoinExchange.cpp \
 
 OBJS = main.o BitcoinExchange.o \
 
-FLAGS = -std=c++98
+FLAGS = -std=c++98 
 #-Wall -Wextra -Werror 
 
 all : $(NAME)
