@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:02:43 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/04/04 17:23:34 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/04/05 20:07:46 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ BitcoinExchange::BitcoinExchange()
 	return ;
 }
 
-BitcoinExchange::BitcoinExchange( const BitcoinExchange & src )
+BitcoinExchange::BitcoinExchange( const BitcoinExchange & src ) : _database(src._database)
 {
+	this->_data = src._data;
 }
 
 
@@ -51,10 +52,10 @@ BitcoinExchange::~BitcoinExchange()
 
 BitcoinExchange &				BitcoinExchange::operator=( BitcoinExchange const & rhs )
 {
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
+	if (this != &rhs)
+	{
+		this->_data = rhs.getData();
+	}
 	return *this;
 }
 
@@ -189,14 +190,35 @@ bool	BitcoinExchange::date_in_range(std::string &line) const throw()
 		return (true);
 }
 
-std::string	BitcoinExchange::calculate(std::string &line, std::string &res) throw()
+void	BitcoinExchange::calculate_and_print(std::string line) throw()
 {
 	std::stringstream	stream(line);
 	std::string			date;
+	std::string			value_str;
+	float				res;
 
 	getline(stream, date, ' ');
+	getline(stream, value_str, ' ');
+	getline(stream, value_str, ' ');
 	if (this->_data.count(date) > 0)
-		return (line);
+	{
+		res = this->_data[date] * atof(value_str.c_str());
+		line.replace(11, 1, "=>");
+		std::cout << line << " = " << res << std::endl;
+	}
+	else
+	{
+		std::map<std::string, float>::iterator it;
+		it = this->_data.insert(std::make_pair(date, 0)).first;
+		std::map<std::string, float>::iterator it_tmp;
+		it_tmp = it;
+		it--;
+		res = this->_data[it->first] * atof(value_str.c_str());
+		line.replace(11, 1, "=>");
+		this->_data.erase(it_tmp);
+		std::cout << line << " = " << res << std::endl;
+	}
+	
 }
 
 void	BitcoinExchange::main_algo(char *input) throw()
@@ -216,12 +238,18 @@ void	BitcoinExchange::main_algo(char *input) throw()
 		else if (date_in_range(line) == false)
 			std::cout << "Error: date out of range." << std::endl;
 		else
-		{
-			calculate(line, res);
-			std::cout << res << std::endl;
-		}
+			calculate_and_print(line);
 	}
 	return ;
+}
+
+/*
+** --------------------------------- ACCESSOR ---------------------------------
+*/
+
+std::map<std::string, float>	BitcoinExchange::getData() const throw()
+{
+	return (this->_data);
 }
 
 /* ************************************************************************** */
