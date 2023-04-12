@@ -1,0 +1,13 @@
+Erreur a gerer :
+- ac != 2
+- av[1] contient seulement : nombre, operateur et espace entre chaque
+
+
+Regle du main algo :
+- si str[i] est un operateur, faire l'operation des deux derniers nombre de stack
+
+main algo :
+- boucle getline(' ')
+- dans boucle :
+	- si str == digit -> push
+	- sinon si str == operand && stack.size() > 1 -> faire operation des deux derniers nombres -> push resultat
