@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 20:19:42 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/04/14 15:58:52 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/04/22 20:14:59 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@ static bool	isoperator(char c)
 		return (1);
 	else
 		return (0);
+}
+
+static bool	has_invalid_division(std::string str)
+{
+	int	nbr;
+
+	for (int i = 0; str[i]; i++)
+	{
+		if (isdigit(str[i]))
+			nbr = 
+		if (str[i] == '/')
+	}
 }
 
 static bool	is_input_valid(char *input)
@@ -36,6 +48,8 @@ static bool	is_input_valid(char *input)
 			return (false);
 	}
 	str.assign(input);
+	if (has_invalid_division(str) == true)
+		return (false);
 	if (str[0] == ' ')
 		return (false);
 	else if ((str[str.length() - 1]) == ' ')
