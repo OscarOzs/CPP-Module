@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 20:19:42 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/04/25 16:41:18 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/04/25 20:46:15 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,20 @@ static bool	is_input_valid(char *input)
 	int					element_count = 0;
 	int					space_count = 0;
 
+	str.assign(input);
 	for (int i = 0; str[i]; i++)
 	{
 		if (!isdigit(str[i]) && !isoperator(str[i])
 			&& str[i] != ' ')
 			return (false);
 	}
-	str.assign(input);
 	if (str[0] == ' ')
 		return (false);
 	else if ((str[str.length() - 1]) == ' ')
 		return (false);
 	while (getline(stream, element, ' '))
 	{
-		if (element.length() > 1)
-			return (false);
-		else if (isdigit(element[0]) || isoperator(element[0]))
+		if (isdigit(element[0]) || isoperator(element[0]))
 			element_count++;
 	}
 	for (int i = 0; str[i]; i++)
@@ -74,7 +72,6 @@ static bool	is_input_valid(char *input)
 	}
 	if (space_count >= element_count)
 		return (false);
-	
 	if (has_invalid_division(str) == true)
 		return (false);
 	return (true);
@@ -115,7 +112,7 @@ void	rpn_calculate(char *av)
 	{
 		while (getline(stream, str, ' '))
 		{
-			if (isdigit(str[0]))
+			if (isdigit(str[0]) || atoi(str.c_str()) < 0)
 				stack.push(atoi(str.c_str()));
 			else if (isoperator(str[0]))
 			{
