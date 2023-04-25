@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 20:19:42 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/04/22 20:14:59 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:41:18 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,20 @@ static bool	has_invalid_division(std::string str)
 {
 	int	nbr;
 
-	for (int i = 0; str[i]; i++)
+	nbr = 1;
+	for (size_t i = 0; i < str.length(); i += 2)
 	{
 		if (isdigit(str[i]))
-			nbr = 
-		if (str[i] == '/')
+		{
+			if (atoi(&str[i]) == 0)
+				nbr = 0;
+			else
+				nbr = 1;
+		}
+		if (str[i] == '/' && nbr == 0)
+			return (true);
 	}
+	return (false);
 }
 
 static bool	is_input_valid(char *input)
@@ -48,8 +56,6 @@ static bool	is_input_valid(char *input)
 			return (false);
 	}
 	str.assign(input);
-	if (has_invalid_division(str) == true)
-		return (false);
 	if (str[0] == ' ')
 		return (false);
 	else if ((str[str.length() - 1]) == ' ')
@@ -67,6 +73,9 @@ static bool	is_input_valid(char *input)
 			space_count++;
 	}
 	if (space_count >= element_count)
+		return (false);
+	
+	if (has_invalid_division(str) == true)
 		return (false);
 	return (true);
 }
