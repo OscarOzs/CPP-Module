@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 20:19:42 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/04/25 20:46:15 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/04/25 22:45:49 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,11 @@ static bool	is_input_valid(char *input)
 		if (str[i] == ' ')
 			space_count++;
 	}
-	if (space_count >= element_count)
+	if (space_count == 0)
 		return (false);
-	if (has_invalid_division(str) == true)
+	else if (space_count >= element_count)
+		return (false);
+	else if (has_invalid_division(str) == true)
 		return (false);
 	return (true);
 }
