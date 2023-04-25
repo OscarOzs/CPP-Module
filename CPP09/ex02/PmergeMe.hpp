@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 14:06:15 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/04/21 18:03:28 by oozsertt         ###   ########.fr       */
+/*   Created: 2023/04/18 14:06:22 by oozsertt          #+#    #+#             */
+/*   Updated: 2023/04/21 17:02:38 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
-int	*sort_algo(int *tab)
-{
-	
-}
+# include <string>
 
-int main(int ac, char **av)
-{
-	
-}
+#endif
