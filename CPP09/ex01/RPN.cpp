@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 20:19:42 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/04/25 22:45:49 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/05/17 14:59:19 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,9 @@ void	rpn_calculate(char *av)
 			}
 		}
 	}
-	std::cout << stack.top() << std::endl;
+	if (stack.size() == 1)
+		std::cout << stack.top() << std::endl;
+	else
+		std::cout << "Error" << std::endl;
 	return ;
 }
