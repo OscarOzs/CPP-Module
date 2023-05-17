@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 14:06:22 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/05/17 13:56:13 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/05/17 15:41:13 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ static void	fillMainAndPending(T &tab, T &main, T &pending)
 		else
 			main.push_back(tab[i]);
 	}
-	main.insert(main.begin(), pending[0]);
-	pending.erase(pending.begin());
 }
 
 template<typename T>
