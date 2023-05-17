@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:02:38 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/04/05 20:06:46 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/05/17 14:27:48 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ class BitcoinExchange
 	private:
 		BitcoinExchange();
 		
-		std::map<std::string, float> _data;
-		std::string const _database;
+		std::map<std::string, float>	_data;
+		std::string const				_database;
+		bool							_hasDatabase;
 
 };
 

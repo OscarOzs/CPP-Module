@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 14:02:43 by oozsertt          #+#    #+#             */
-/*   Updated: 2023/04/05 20:07:46 by oozsertt         ###   ########.fr       */
+/*   Updated: 2023/05/17 14:34:58 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,13 @@ void	BitcoinExchange::check_file(char *input) const throw(std::invalid_argument)
 void	BitcoinExchange::store_database() throw ()
 {
 	std::ifstream file(this->_database.c_str());
+	if (file.good() == false)
+	{
+		this->_hasDatabase = false;
+        return;
+	}
+	else
+		this->_hasDatabase = true;
 	std::string	line;
 	std::string	date;
 	std::string	value;
@@ -171,7 +178,7 @@ int		BitcoinExchange::check_value(std::string &line) const throw()
 	pos = line.find('|');
 	value_str = line.substr(pos + 2);
 	value = atof(value_str.c_str());
-	if (value >= 1000)
+	if (value > 1000)
 		return (1);
 	else if (value < 0)
 		return (2);
@@ -235,6 +242,8 @@ void	BitcoinExchange::main_algo(char *input) throw()
 			std::cout << "Error: too large a number." << std::endl;
 		else if (check_value(line) == 2)
 			std::cout << "Error: not a positive number." << std::endl;
+		else if (this->_hasDatabase == false)
+			std::cout << "Error: data.csv file inexistant." << std::endl;
 		else if (date_in_range(line) == false)
 			std::cout << "Error: date out of range." << std::endl;
 		else
